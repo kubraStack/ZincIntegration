@@ -15,4 +15,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Domain\EntityLayer.csproj" />
+  </ItemGroup>
+
 </Project>

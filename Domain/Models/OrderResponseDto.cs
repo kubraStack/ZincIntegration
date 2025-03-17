@@ -8,8 +8,10 @@ namespace EntityLayer.Entities
 {
     public class OrderResponseDto
     {
-        public bool Success { get; set; }
-        public string Message { get; set; }
-        public int? OrderId { get; set; }
+        public int OrderId { get; set; }
+        public string Status { get; set; }
+        public string TrackingNumber { get; set; }
+        public DateTime OrderDate { get; set; }
+        public string EstimatedDeliveryDate { get; set; }
     }
 }
