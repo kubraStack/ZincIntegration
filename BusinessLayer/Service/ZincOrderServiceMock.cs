@@ -1,5 +1,6 @@
 ﻿using DataAccessLayer.Context;
 using EntityLayer.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,6 +42,39 @@ namespace BusinessLayer.Service
                 TrackingNumber = $"TRK-{Guid.NewGuid().ToString().Substring(0, 8).ToUpper()}",
                 EstimatedDeliveryDate = DateTime.UtcNow.AddDays(5).ToString("yyyy-MM-dd")
             };
+        }
+
+        public async Task<List<Order>> GetAllOrdersAsync()
+        {
+            return await _context.Orders.ToListAsync();
+        }
+        public async Task<Order?> GetOrderByIdAsync(int id)
+        {
+            return await _context.Orders.FindAsync(id);
+        }
+        public async Task<bool> DeleteOrderAsync(int id)
+        {
+            var order = await _context.Orders.FindAsync(id);
+            if (order == null)
+            {
+                return false;
+            }
+
+
+            _context.Orders.Remove(order);
+            await _context.SaveChangesAsync();
+            return true;
+        }
+
+        public async Task<bool> UpdateOrderStatusAsync(int id, string status)
+        {
+            var order = await _context.Orders.FindAsync(id);
+            if (order == null) return false;
+
+            order.Status = status;
+            await _context.SaveChangesAsync();
+            return true;
+
         }
     }
 }

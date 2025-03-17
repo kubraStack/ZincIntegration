@@ -22,5 +22,6 @@ namespace ZincOrderIntegration.Api.Controllers
             var response = await _zincOrderService.PlaceOrderAsync(requestDto);
             return Ok(response);
         }
+        [HttpGet]
     }
 }
