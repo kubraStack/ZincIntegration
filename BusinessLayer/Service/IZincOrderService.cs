@@ -10,5 +10,9 @@ namespace BusinessLayer.Service
     public interface IZincOrderService
     {
         Task<OrderResponseDto> PlaceOrderAsync(OrderRequestDto orderRequestDto);
+        Task<List<Order>> GetAllOrdersAsync();
+        Task<Order?> GetOrderByIdAsync(int id);
+        Task<bool> DeleteOrderAsync(int id);
+        Task<bool> UpdateOrderStatusAsync(int id, string status);
     }
 }
