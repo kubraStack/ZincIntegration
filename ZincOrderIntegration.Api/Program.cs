@@ -4,10 +4,30 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowSpecificOrigins",
+         builder =>
+         {
+             builder.WithOrigins("http://localhost:4200")
+                    .AllowAnyHeader()
+                    .AllowAnyMethod()
+                    .AllowCredentials();
+         });
+});
 // Add services to the container.
-
-builder.Services.AddScoped<IZincOrderService, ZincOrderServiceMock>();
+var userMockService = true; // API key gelince false olacak
+if (userMockService)
+{
+    builder.Services.AddScoped<IZincOrderService, ZincOrderServiceMock>();
+}
+else
+{
+    //böylelikle fake ve real servislerin arasýna true false yaparak geçiþ yapýlabilir.
+    builder.Services.AddScoped<IZincOrderService, ZincOrderServiceReal>();
+    builder.Services.AddHttpClient<ZincOrderServiceReal>(); //HttpClient injection
+}
+    builder.Services.AddScoped<IZincOrderService, ZincOrderServiceMock>();
 builder.Services.AddDbContext<ZincDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("ZincDbConnection"));
@@ -26,6 +46,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+
 
 app.UseHttpsRedirection();
 
