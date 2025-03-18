@@ -46,9 +46,9 @@ Researching the API Key acquisition process to complete the integration
 
 ----------------------------------------------------------------------------------
 
-✅ 1. Zinc.io Mock API’sini Gerçek API’ye Çevirmeye Hazırladık
-Mevcut mock servisin yanına, gerçek Zinc.io API’ye istek atacak bir servis ekledik.
-Böylece, geliştirme sırasında mock servisi kullanabilir, gerçek kullanımda Zinc.io API’yi aktif edebiliriz.
+✅ 1. Zinc.io Mock API’sini Gerçek API’ye Çevirmeye Hazırladım
+Mevcut mock servisin yanına, gerçek Zinc.io API’ye istek atacak bir servis ekledim.
+Böylece, geliştirme sırasında mock servisi kullanabilir, gerçek kullanımda Zinc.io API’yi aktif edebilirim.
 
 ✅ 2. Order CRUD İşlemlerini Tamamladık
 Sipariş Ekleme (POST /orders)
@@ -57,10 +57,10 @@ Belirli Bir Siparişi Getirme (GET /orders/{id})
 Sipariş Silme (DELETE /orders/{id})
 Sipariş Durumu Güncelleme (PATCH /orders/{id}/status)
 
-✅ 3. DeleteOrderAsync(id) Metodunu Düzelttik
-Remove() metodu id ile doğrudan çalışmaz, bu yüzden önce ilgili siparişi FindAsync(id) ile bulduk.
-Varlık varsa sildik, yoksa false döndürdük.
+✅ 3. DeleteOrderAsync(id) Metodunu Düzelttim
+Remove() metodu id ile doğrudan çalışmaz, bu yüzden önce ilgili siparişi FindAsync(id) ile buldum.
+Varlık varsa sildim, yoksa false döndürdüm.
 
-✅ 4. Zinc.io API Entegrasyonu İçin Altyapıyı Hazırladık
-Zinc.io ile gerçek sipariş gönderimi için gerekli servis yapısını kurduk.
-API Key alma sürecini araştırıp entegrasyonu tamamlamaya hazırlanıyoruz.
+✅ 4. Zinc.io API Entegrasyonu İçin Altyapıyı Hazırladım
+Zinc.io ile gerçek sipariş gönderimi için gerekli servis yapısını kurdum.
+API Key alma sürecini araştırıp entegrasyonu tamamlamaya hazırlanıyorum.
